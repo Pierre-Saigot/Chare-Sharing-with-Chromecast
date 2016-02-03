@@ -1,0 +1,119 @@
+ <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Chare - Sharing with ChromeCast</title>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+
+      <meta type="author" content="Pierre Saigot" >
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <script src="helloVideos.js"></script>
+    </head>
+
+    <body>
+      <img src="images/bunny.jpg" id="thumb">
+
+      <h1 class="welcome">Welcome <i class="large material-icons">accessibility</i><img src="images/cast_icon_idle.png" id="casticon" width="50"></h1>
+        <h4 class="stats">Statut : <span id="playerstate">Aucune Lecture </span></h4>
+       <div class="row media_custom_field">
+        <form action="#">
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="text" name="customMediaURL" value="" size="70" id="customMediaURL"><br>
+              <label for="customMediaURL">Entre une URL d'un média custom</label>
+              <a class="waves-effect waves-light btn-large save" name="loadCustomMeida" onclick="loadCustomMedia();"><i class="material-icons left">save</i>Charger Le Média </a>
+
+              <form action="#">
+                    <div class="input-field volume">
+                      <p class="range-field">
+                       <input type="range" min="0" max="100" step="1" onmouseup="setReceiverVolume(1-this.value/100,false);">
+                      </p>
+                   </div>
+              </form>
+              
+             <form action="#">
+               <ul class="choose">
+                  <li>
+                    <p>
+                      <input class="with-gap" name="group3" type="radio" name="media" id="choose_moovie_select_1"  onclick="selectMedia(0);" checked />
+                      <label for="choose_moovie_select_1">Big Buck Bunny MP4</label>
+                    </p>
+                    </li>
+                    <li>
+                      <p>
+                        <input class="with-gap" name="group3" type="radio" name="media" id="choose_moovie_select_2"  onclick="selectMedia(1);" />
+                        <label for="choose_moovie_select_2">Elephants Dream MP4</label>
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <input class="with-gap" name="group3" type="radio" name="media" id="choose_moovie_select_3"  onclick="selectMedia(2);" />
+                        <label for="choose_moovie_select_3">Tears of Steel MOV</label>
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <input class="with-gap" name="group3" type="radio" name="media" id="choose_moovie_select_4"  onclick="selectMedia(3);" />
+                        <label for="choose_moovie_select_4">Reel MP4</label>
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <input class="with-gap" name="group3" type="radio" name="media" id="choose_moovie_select_5"  onclick="selectMedia(4);" />
+                        <label for="choose_moovie_select_5">Google I/O 2011 MP3</label>
+                      </p>
+                    </li>
+                </ul>
+              </form>
+            </div>
+          </div>
+        </form>
+      </div>
+      <ul class="nav_action">
+        <li>
+            <a class="waves-effect waves-light btn-large" onclick="launchApp()"><i class="material-icons left">cast</i>Connexion</a>
+        </li>
+        <li>
+            <a class="waves-effect waves-light btn-large" onclick="stopApp()"><i class="material-icons left">cast</i>Deconnexion</a>
+        </li>
+        <li>
+            <a class="waves-effect waves-light btn-large" onclick="loadMedia()"><i class="material-icons left">video_library</i>Charger Média</a>
+        </li>
+        <li>
+            <a class="waves-effect waves-light btn-large" id="playpauseresume" onclick="playMedia()"><i class="material-icons left">play_arrow</i>Play</a>
+        </li>
+        <li>
+            <a class="waves-effect waves-light btn-large" onclick="stopMedia()"><i class="material-icons left">stop</i>Stop</a>
+        </li>
+        <li>
+            <a class="waves-effect waves-light btn-large" id="muteunmute" onclick="muteMedia();"><i class="material-icons left">volume_mute</i>Mute</a>
+        </li>
+        <li>
+            <a class="waves-effect waves-light btn-large" id="getstatus" onclick="getMediaStatus();"><i class="material-icons left">refresh</i>Refresh Status</a>
+        </li>
+      </ul>
+       <form action="#">
+          <div class="row">
+            <div class="input-field col s10 offset-s1">
+              <p class="range-field">
+                <input id="progress" type="range" min="1" max="100" value="1" step="1" onmouseup="seekMedia(this.value);">
+              </p>
+           </div>
+        </div>
+      </form>
+
+
+      <textarea id="debugmessage"></textarea>
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+    </body>
+  </html>
+        
